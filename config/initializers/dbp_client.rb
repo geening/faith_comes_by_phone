@@ -1,0 +1,1 @@
+DBP_CLIENT = DigitalBiblePlatform::Client.new(AppConfig.digital_bible_platform.api_key)

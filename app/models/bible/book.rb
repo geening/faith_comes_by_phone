@@ -18,4 +18,7 @@
 #
 
 class Bible::Book < ActiveRecord::Base
+  def url(chapter=1)
+    DBP_CLIENT.url_for(external_id, chapter)
+  end
 end

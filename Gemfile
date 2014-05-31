@@ -9,7 +9,7 @@ gem 'pg'
 gem 'hashie', '~>1.2.0'
 gem 'configy', '1.1.3'
 
-gem 'digital_bible_platform', path: '/Users/chip/development/Gems/digital_bible_platform'
+gem 'digital_bible_platform'#, path: '/Users/chip/development/Gems/digital_bible_platform'
 
 group :development do
   gem 'zeus'
