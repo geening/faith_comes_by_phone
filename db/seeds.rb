@@ -14,8 +14,8 @@ end
 Language.create!({
   code:'ENG',
   default_bible_version:'ESV',
-  twilio_sid: 'PN34183bbea54a46c3ba5f7a530f91c2f6',
-  twilio_phone_number: '+14153674222',
+  twilio_sid: AppConfig.twilio.sid,
+  twilio_phone_number: AppConfig.twilio.number,
 })
 
 Language.all.each do |lang|
