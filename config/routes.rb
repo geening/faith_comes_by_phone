@@ -1,6 +1,9 @@
 FaithComesByPhone::Application.routes.draw do
   post "phone/call"
   post "phone/sms"
+  post "phone/call_back"
+  post "phone/play_audio"
+  post "phone/play_next_audio"
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

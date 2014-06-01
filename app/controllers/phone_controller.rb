@@ -1,45 +1,66 @@
 class PhoneController < ApplicationController
-  before_filter :twilio_adapter
-  before_filter :find_language
+  before_filter :twilio_adapter, :set_language, :set_user
+  
+  def sms 
+    @user.touch(:last_sms_at)
+    text_back "Move Your Bookmark:\r1) Genesis 4\r2) Genesis 5\r=> Genesis 6\r4) Genesis 7\r5) Genesis 8"
+  end
   
   def call
-    
+    render 'sms/call_back'
+    @user.touch(:last_call_at)
   end
-
-  def sms 
-    @user = User.where(phone_number: @phone_number, language:@language).first_or_create!
-    @user.touch(:last_sms_at)
-    
-    text_back " Line 1\r*Line 2\rLine 3"
-    
-    # respond_to do |format|
-    #   if @question.save
-    #     format.html   { render text: 'Thanks! Your question has been submitted.' }
-    #     format.json   { render json: "Thanks! Your question has been submitted.", status: :created }
-    #     format.twilio { text_back "Thanks for your question!" }
-    #   else
-    #     format.html   { render action: "new" }
-    #     format.json   { render json: @question.errors, status: :unprocessable_entity }
-    #     format.twilio { text_back "Sorry, there was a problem receiving your question. Please try again" }
-    #   end
-    # end
+  
+  def call_back
+    render 'sms/empty'
+    @client = Twilio::REST::Client.new AppConfig.twilio.sid, AppConfig.twilio.token
+    @call = @client.account.calls.create(
+      from: @language.twilio_phone_number,
+      to:   @user.phone_number,
+      url:  phone_play_audio_url,
+      'IfMachine'=>'hangup')
+  end
+  
+  def play_audio
+    play @user.current_book.url(@user.current_chapter)
+  end
+  
+  def play_next_audio
+    @user.next_chapter!
+    render 'sms/continue_check'
   end
   
 private
-
-  def find_language
-    @language = Language.where(twilio_phone_number:params['To']).first
-  end
-
-  def twilio_adapter
-    @country        = params['FromCountry'] if params['FromCountry']
-    @text           = params['Body']        if params['Body'] 
-    @phone_number   = params['From']        if params['From']
-  end
-
   def text_back( message )
     @message = message
     render 'sms/response'
+  end
+  
+
+  def play(url)
+    @url = url
+    render 'sms/play'
+  end
+  
+  def set_user
+    @user = User.where(phone_number: @phone_number, language_id:@language.id).first_or_create!
+  end
+  
+  def set_language
+    @language = Language.where(twilio_phone_number:@twilio_phone_number).first
+  end
+
+  def twilio_adapter
+    @country             = params['FromCountry'] if params['FromCountry']
+    @text                = params['Body']        if params['Body'] 
+    
+    if params['Direction']=='outbound-api'
+      @phone_number        = params['To']
+      @twilio_phone_number = params['From']
+    else
+      @phone_number        = params['From']
+      @twilio_phone_number = params['To']
+    end
   end
   
   # Example: {"ToCountry"=>"US", "ToState"=>"CA", "SmsMessageSid"=>"SMe23040ec9de03e3d3f4890f9cdad64d3", "NumMedia"=>"0", "ToCity"=>"SAUSALITO", "FromZip"=>"94108", "SmsSid"=>"SMe23040ec9de03e3d3f4890f9cdad64d3", "FromState"=>"CA", "SmsStatus"=>"received", "FromCity"=>"SAN FRANCISCO", "Body"=>"Hey hey", "FromCountry"=>"US", "To"=>"+14153674222", "ToZip"=>"94965", "MessageSid"=>"SMe23040ec9de03e3d3f4890f9cdad64d3", "AccountSid"=>"AC5381686daf0f4c979304e16c92dc8c35", "From"=>"+14156581081", "ApiVersion"=>"2010-04-01"}

@@ -14,7 +14,6 @@ end
 Language.create!({
   code:'ENG',
   default_bible_version:'ESV',
-  twilio_sid: AppConfig.twilio.sid,
   twilio_phone_number: AppConfig.twilio.number,
 })
 

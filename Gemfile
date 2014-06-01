@@ -8,7 +8,8 @@ gem 'mysql2'
 gem 'pg'
 gem 'hashie', '~>1.2.0'
 gem 'configy', '1.1.3'
-
+gem 'twilio-ruby'
+ 
 gem 'digital_bible_platform'#, path: '/Users/chip/development/Gems/digital_bible_platform'
 
 group :development do

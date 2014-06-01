@@ -24,6 +24,8 @@ class Bible::Book < ActiveRecord::Base
   belongs_to :language
   
   def url(chapter=1)
+    # Rails.cache.fetch("book-#{id}---chapter-#{chapter}") { DBP_CLIENT.url_for(external_id, chapter) }
     DBP_CLIENT.url_for(external_id, chapter)
   end
+  
 end

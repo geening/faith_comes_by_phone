@@ -33,13 +33,12 @@ ActiveRecord::Schema.define(version: 20140531235748) do
     t.string   "code",                  limit: 3, null: false
     t.string   "default_bible_version"
     t.string   "twilio_phone_number"
-    t.string   "twilio_sid"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "languages", ["code"], name: "index_languages_on_code", unique: true, using: :btree
-  add_index "languages", ["twilio_sid"], name: "index_languages_on_twilio_sid", unique: true, using: :btree
+  add_index "languages", ["twilio_phone_number"], name: "index_languages_on_twilio_phone_number", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.integer  "language_id",                null: false

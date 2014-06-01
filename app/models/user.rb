@@ -23,6 +23,10 @@ class User < ActiveRecord::Base
   belongs_to :language
   before_create :default_book
   
+  def next_chapter!
+    self.update_attribute :current_chapter, current_chapter+1
+  end
+  
 private
   def default_book
     self.current_book ||= Bible::Book.where(name:'John',language:language).first
