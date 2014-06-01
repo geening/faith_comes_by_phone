@@ -17,6 +17,8 @@ group :development do
   gem 'factory_girl_rails'
   gem 'annotate'
   gem 'forward'
+  gem 'thin'
+  gem 'pry'
 end
 
 
