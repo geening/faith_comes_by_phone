@@ -12,7 +12,7 @@ gem 'twilio-ruby'
  
 gem 'digital_bible_platform'#, path: '/Users/chip/development/Gems/digital_bible_platform'
 
-group :development do
+group :development, :test do
   gem 'zeus'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
@@ -20,6 +20,7 @@ group :development do
   gem 'forward'
   gem 'thin'
   gem 'pry'
+  gem 'guard-rspec'
 end
 
 

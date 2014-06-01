@@ -19,8 +19,7 @@
 
 FactoryGirl.define do
   factory :language do
-    code "MyString"
-    twilio_sid "MyString"
+    code "ENG"
     twilio_phone_number "MyString"
   end
 end

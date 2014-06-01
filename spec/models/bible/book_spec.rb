@@ -23,5 +23,22 @@
 require 'spec_helper'
 
 describe Bible::Book do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+  describe "#parse_str", :focus do
+    it "returns a [book, chapter] array" do
+      [ 
+        # 'Gen11',
+        'Gen 11',
+        'Gen       11',
+        'Gen 11:10',
+      ].each {|str| subject.parse_str(str).should eql ['Gen', '11']}
+    end
+    
+    it "does not let the chapter exceed the count" do
+      create(:bible_book, external_id:'1Tim', chapter_count:6)
+      
+      subject.parse_str('1 Tim 100').should eql ['1 Tim', '6']
+    end
+  end
+  
 end

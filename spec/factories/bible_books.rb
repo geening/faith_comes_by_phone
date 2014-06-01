@@ -24,10 +24,12 @@
 
 FactoryGirl.define do
   factory :bible_book, :class => 'Bible::Book' do
-    dam_id "MyString"
-    external_id "MyString"
-    name "MyString"
-    position 1
-    chapter_count 1
+    language
+    sequence(:position)
+    external_id "Gen"
+    name "Genesis"
+    chapter_count 5
+    dam_id 'ENGESVOGEN'
+    version 'ESV'
   end
 end
