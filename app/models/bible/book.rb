@@ -50,4 +50,12 @@ class Bible::Book < ActiveRecord::Base
     
     [book, chapter]
   end
+
+  def next_book
+    Bible::Book.where(position: [81, position+1].min).first
+  end
+
+  def prev_book
+    Bible::Book.where(position: [1, position-1].max).first
+  end
 end

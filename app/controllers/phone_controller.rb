@@ -82,7 +82,40 @@ private
   end
   
   def sms_menu
-    "Move Your Bookmark:\r1) Genesis 4\r2) Genesis 5\r=> Genesis 6\r4) Genesis 7\r5) Genesis 8"
+    current_book = @user.current_book
+    current_chapter = @user.current_chapter
+    
+    menu = if current_chapter < 3
+      [
+        "=> #{current_book.name} #{current_chapter}",
+        "2) #{current_book.name} #{current_chapter+1}",
+        "3) #{current_book.name} #{current_chapter+2}",
+        "4) #{current_book.name} #{current_chapter+3}",
+        "5) #{current_book.name} #{current_chapter+4}",
+      ].join("\r")
+    
+    elsif current_chapter+2 > current_book.chapter_count  #end of book
+      [
+        "1) #{current_book.name} #{current_chapter-4}",
+        "2) #{current_book.name} #{current_chapter-3}",
+        "3) #{current_book.name} #{current_chapter-2}",
+        "4) #{current_book.name} #{current_chapter-1}",
+        "=> #{current_book.name} #{current_chapter}",
+      ].join("\r")
+      
+    else # Happy Path
+      [
+        "1) #{current_book.name} #{current_chapter-2}",
+        "2) #{current_book.name} #{current_chapter-1}",
+        "=> #{current_book.name} #{current_chapter}",
+        "4) #{current_book.name} #{current_chapter+1}",
+        "5) #{current_book.name} #{current_chapter+2}",
+      ].join("\r")
+      
+      
+    end
+    
+    "Move Your Bookmark:\r#{menu}"
   end
   
   # Example: {"ToCountry"=>"US", "ToState"=>"CA", "SmsMessageSid"=>"SMe23040ec9de03e3d3f4890f9cdad64d3", "NumMedia"=>"0", "ToCity"=>"SAUSALITO", "FromZip"=>"94108", "SmsSid"=>"SMe23040ec9de03e3d3f4890f9cdad64d3", "FromState"=>"CA", "SmsStatus"=>"received", "FromCity"=>"SAN FRANCISCO", "Body"=>"Hey hey", "FromCountry"=>"US", "To"=>"+14153674222", "ToZip"=>"94965", "MessageSid"=>"SMe23040ec9de03e3d3f4890f9cdad64d3", "AccountSid"=>"AC5381686daf0f4c979304e16c92dc8c35", "From"=>"+14156581081", "ApiVersion"=>"2010-04-01"}
