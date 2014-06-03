@@ -1,4 +1,6 @@
 FaithComesByPhone::Application.routes.draw do
+  get "health", to: 'health#index'
+  
   post "phone/call"
   post "phone/sms"
   post "phone/call_back"
