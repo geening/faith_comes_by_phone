@@ -14,7 +14,7 @@ class PhoneController < ApplicationController
           @user.update_attributes({
             current_book: _book,
             current_chapter: chapter
-          }) && text_back( "Bookmark Updated. Call to hear #{@text}")
+          }) && call_user
         else
           raise "Text Parse Error"
         end
@@ -31,12 +31,6 @@ class PhoneController < ApplicationController
   
   def call_back
     render 'sms/empty'
-    @client = Twilio::REST::Client.new AppConfig.twilio.sid, AppConfig.twilio.token
-    @call = @client.account.calls.create(
-      from: @language.twilio_phone_number,
-      to:   @user.phone_number,
-      url:  phone_play_audio_url,
-      'IfMachine'=>'hangup')
   end
   
   def play_audio
@@ -54,6 +48,14 @@ private
     render 'sms/response'
   end
   
+  def call_user
+    @client = Twilio::REST::Client.new AppConfig.twilio.sid, AppConfig.twilio.token
+    @call = @client.account.calls.create(
+      from: @language.twilio_phone_number,
+      to:   @user.phone_number,
+      url:  phone_play_audio_url,
+      'IfMachine'=>'hangup')
+  end
 
   def play(url)
     @url = url
