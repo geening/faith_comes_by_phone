@@ -47,11 +47,13 @@ The application is essentially a 'mashup' of other services.  So while the appli
   ```  
   **[NOTE]** We are using SQLite locally.  Reset your data by simply deleting ``db/development.sqlite3`` and re-running ``rake db:setup``
 
-  8) Start your server with the following command and visit [localhost:3000](localhost:3000/health).  
-  ```rails server```
+  8) Start your server with the following command and visit [localhost:3000](localhost:3000/health).
+  ```
+  rails server
+  ```  
   **[NOTE]** There is no UI so you should just see 'ok'
   
   
-  9) Call your Twilio number to test!  You should see activity in you local Rails server/log, and hear the Bible!
+  9) **Call your Twilio number to test!  You should see activity in you local Rails server/log, and hear the Bible!**
 
 
