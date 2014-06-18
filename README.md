@@ -16,7 +16,7 @@ _If a user texts a question mark_ the service returns a text-based menu of the u
 
 ### How can I help?
 Regardless of your technical expertise, there are lots of opportunities to contribute!  
-[Check the Help Wanted](https://github.com/cornerstone-sf/faith_comes_by_phone/issues?labels=help+wanted&page=1&state=open) section of this project for more details.
+[Check the Help Wanted](https://github.com/cornerstone-sf/faith_comes_by_phone/issues?labels=help+wanted&page=1&state=open) section of this project to provide feedback or get involved.
 
 ## Development
 The project is a [Ruby on Rails](http://rubyonrails.org/) app.  If you are new to Ruby or Rails, learn more at [Code School](https://www.codeschool.com/paths/ruby).  
