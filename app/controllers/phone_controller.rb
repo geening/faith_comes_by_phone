@@ -30,6 +30,7 @@ class PhoneController < ApplicationController
   end
   
   def call_back
+    call_user
     render 'sms/empty'
   end
   
