@@ -9,8 +9,8 @@ While missionaries have done an astonishing job translating the Bible, literacy 
 **Calling:**
 When a user calls or texts the number, the service calls back and plays the audio (incomming calls are free). When a user hangs up, we 'bookmark' their spot for next time (based on their phone number). 
 
-**Texting:**
-__When a user texts a verse_ (Example: Romans:8) the service imediatly calls the user and plays that verse.  
+**Texting:**  
+_When a user texts a verse_ (Ex: Romans:8) the service imediatly calls the user and plays that verse.  
 _If a user texts a question mark_ the service returns a text based menu of the user's recent play-history.
 
 
@@ -37,8 +37,8 @@ The application is essentially a 'mashup' of other services.  So while the appli
   ```
   **[NOTE]** Also add your Digital Bible Platform key when you receive it. 
       
-  5) Configure your new Twilio number's Request URL with the domain you chose in Forward HQ. (See screenshot)
-
+  5) Configure your new Twilio number's Request URL with the domain you chose in Forward HQ.  
+  ![Twilio / ForwardHQ Setup](https://raw.githubusercontent.com/cornerstone-sf/faith_comes_by_phone/master/docs/config-twilio-number.png)  
 
 #### Start the App
   7) Setup your database with the following command.
@@ -47,7 +47,7 @@ The application is essentially a 'mashup' of other services.  So while the appli
   ```  
   **[NOTE]** We are using SQLite locally.  Reset your data by simply deleting ``db/development.sqlite3`` and re-running ``rake db:setup``
 
-  8) Start your server with the following command and visit [localhost:3000](localhost:3000/health).
+  8) Start your server with the following command and visit [localhost:3000](localhost:3000/health).  
   ```rails server```
   **[NOTE]** There is no UI so you should just see 'ok'
   
