@@ -1,5 +1,11 @@
 # Configure your local development environment in config/app_config.local.yml
 
+common:
+  # Please create a free account here: http://www.digitalbibleplatform.com/signup/ 
+  # Authorization takes a day so in the mean time feel free to use the one below:
+  digital_bible_platform:
+    api_key: fd82d19821647fa4829c7ca160b82e6f  # (SF Code for the Kingdom)
+
 production:
   digital_bible_platform:
     api_key: <%= ENV['DIGITAL_BIBLE_PLATFORM_KEY'] %>

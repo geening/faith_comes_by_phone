@@ -1,0 +1,14 @@
+# [DO NOT COMMIT] config/app_config.local.yml
+
+common:
+  # DIGITAL BIBLE PLATFORM: Get a free account here: http://www.digitalbibleplatform.com/signup/ 
+  # But in the mean time feel free to use the one below.
+  digital_bible_platform:
+    api_key: fd82d19821647fa4829c7ca160b82e6f  # (SF Code for the Kingdom)
+  
+  # TWILIO: Get a free account here: https://www.twilio.com/try-twilio
+  twilio:
+    number: # <YOUR TWILION PHONE NUMBER>
+    sid:    # <YOUR TWILION SID>
+    token:  # <YOUR TWILION TOKEN>
+    

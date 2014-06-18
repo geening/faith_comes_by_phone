@@ -1,14 +1,12 @@
-# seeds.rb
-
-def nuke_table(model)
-  model.delete_all
-  ActiveRecord::Base.connection.execute("TRUNCATE #{model.table_name}")
-end
-
-unless Rails.env.production?
-  nuke_table(Bible::Book)
-  nuke_table(Language)
-end
+# def nuke_table(model)
+#   model.delete_all
+#   ActiveRecord::Base.connection.execute("TRUNCATE #{model.table_name}")
+# end
+# 
+# unless Rails.env.production?
+#   nuke_table(Bible::Book)
+#   nuke_table(Language)
+# end
 
 
 Language.create!({
@@ -18,7 +16,7 @@ Language.create!({
 })
 
 Language.all.each do |lang|
-  puts "Learning the Bible in #{lang}"
+  puts "Learning the Bible in #{lang.code}"
   DBP_CLIENT.books(language: lang.code, version:lang.default_bible_version).each do |book|
     Bible::Book.create!({
       language:       lang, 
