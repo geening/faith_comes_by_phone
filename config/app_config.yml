@@ -1,0 +1,9 @@
+# Configure your local development environment in config/app_config.local.yml
+
+production:
+  digital_bible_platform:
+    api_key: <%= ENV['DIGITAL_BIBLE_PLATFORM_KEY'] %>
+  twilio:
+    number: <%= ENV['TWILIO_NUMBER']  %>
+    sid:    <%= ENV['TWILIO_SID']     %>
+    token:  <%= ENV['TWILIO_TOKEN']   %>
