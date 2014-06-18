@@ -24,35 +24,35 @@ The project is a [Ruby on Rails](http://rubyonrails.org/) app.  If you are new t
 The application is essentially a 'mashup' of other services.  So while the application is relatively simple, the setup will require creating a few accounts.  
 
 #### Create a Few Accounts
-  1) [Create a Twilio account](https://www.twilio.com/try-twilio) and buy a phone number ($1 per month).
+1) [Create a Twilio account](https://www.twilio.com/try-twilio) and buy a phone number ($1 per month).
   
-  2) Use a service like [Forward](https://forwardhq.com/) (30 day trial) to connect your localhost to the outside world.
+2) Use a service like [Forward](https://forwardhq.com/) (30 day trial) to connect your localhost to the outside world.
 
-  3) [Request a Digital Bible Platform account](http://www.digitalbibleplatform.com/signup/).  This may take 24 hours, so use the included key until you recieve your key by email.
+3) [Request a Digital Bible Platform account](http://www.digitalbibleplatform.com/signup/).  This may take 24 hours, so use the included key until you recieve your key by email.
 
 #### Configure the Accounts
-  4) Configure your local app for you Twilio account by creating ``config/app_config.local.yml`` based on the example. (Add your Digital Bible Platform key when you receive it.)
+4) Configure your local app for you Twilio account by creating ``config/app_config.local.yml`` based on the example. (Add your Digital Bible Platform key when you receive it.)
   ```
   config/app_config.local.yml.example == becomes ==> config/app_config.local.yml
   ```
       
-  5) Configure your new Twilio number's Request URL with the domain you chose in Forward HQ.  
+5) Configure your new Twilio number's Request URL with the domain you chose in Forward HQ. (See Screenshot for paths)  
   ![Twilio / ForwardHQ Setup](https://raw.githubusercontent.com/cornerstone-sf/faith_comes_by_phone/master/docs/config-twilio-number.png)  
 
 #### Start the App
-  6) Setup your database with the following command.
+6) Setup your database with the following command.
   ```
   rake db:setup
   ```  
   **[NOTE]** We are using SQLite locally.  Reset your data by simply deleting ``db/development.sqlite3`` and re-running ``rake db:setup``
 
-  7) Start your server with the following command and visit [localhost:3000](localhost:3000/health).
+7) Start your server with the following command and visit [localhost:3000](localhost:3000/health).
   ```
   rails server
   ```  
   **[NOTE]** There is no UI so you should just see 'ok'
 
   
-  8) **Call your Twilio number to test!  You should see activity in you local Rails server/log, and hear the Bible!**
+8) **Call your Twilio number to test!  You should see activity in you local Rails server/log, and hear the Bible!**
 
 
