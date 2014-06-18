@@ -31,29 +31,28 @@ The application is essentially a 'mashup' of other services.  So while the appli
   3) [Request a Digital Bible Platform account](http://www.digitalbibleplatform.com/signup/).  This may take 24 hours, so use the included key until you recieve your key by email.
 
 #### Configure the Accounts
-  4) Configure your local app for you Twilio account by creating ``config/app_config.local.yml`` based on the example.
+  4) Configure your local app for you Twilio account by creating ``config/app_config.local.yml`` based on the example. (Add your Digital Bible Platform key when you receive it.)
   ```
-  config/app_config.local.yml.example ====> config/app_config.local.yml
+  config/app_config.local.yml.example == becomes ==> config/app_config.local.yml
   ```
-  **[NOTE]** Also add your Digital Bible Platform key when you receive it. 
       
   5) Configure your new Twilio number's Request URL with the domain you chose in Forward HQ.  
   ![Twilio / ForwardHQ Setup](https://raw.githubusercontent.com/cornerstone-sf/faith_comes_by_phone/master/docs/config-twilio-number.png)  
 
 #### Start the App
-  7) Setup your database with the following command.
+  6) Setup your database with the following command.
   ```
   rake db:setup
   ```  
   **[NOTE]** We are using SQLite locally.  Reset your data by simply deleting ``db/development.sqlite3`` and re-running ``rake db:setup``
 
-  8) Start your server with the following command and visit [localhost:3000](localhost:3000/health).
+  7) Start your server with the following command and visit [localhost:3000](localhost:3000/health).
   ```
   rails server
   ```  
   **[NOTE]** There is no UI so you should just see 'ok'
+
   
-  
-  9) **Call your Twilio number to test!  You should see activity in you local Rails server/log, and hear the Bible!**
+  8) **Call your Twilio number to test!  You should see activity in you local Rails server/log, and hear the Bible!**
 
 
