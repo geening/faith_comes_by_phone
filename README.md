@@ -29,7 +29,7 @@ The application is essentially a 'mashup' of other services.  So while the appli
   
 2) Use a service like [Forward](https://forwardhq.com/) (30 day trial) to connect your localhost to the outside world.
 
-3) [Request a Digital Bible Platform account](http://www.digitalbibleplatform.com/signup/).  This may take 24 hours, so use the included key until you recieve your key by email.
+3) [Request a Digital Bible Platform account](http://www.digitalbibleplatform.com/signup/).  This may take 24 hours, so use the included key until you receive your key by email.
 
 #### Configure the Accounts
 4) Configure your local app for you Twilio account by creating ``config/app_config.local.yml`` based on the example. (Add your Digital Bible Platform key when you receive it.)
